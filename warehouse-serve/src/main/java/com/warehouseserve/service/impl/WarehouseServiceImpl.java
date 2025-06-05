@@ -94,6 +94,17 @@ public class WarehouseServiceImpl implements WarehouseService {
     }
 
     @Override
+    public List<WarehouseDTO> getWarehousesByName(String name) throws DataOperationException {
+        try {
+            return warehouseRepository.findByNameContaining(name).stream()
+                    .map(this::convertToDTO)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new DataOperationException("Failed to get warehouses by name: " + name, e);
+        }
+    }
+
+    @Override
     @Transactional
     public WarehouseDTO createWarehouse(WarehouseDTO warehouseDTO) throws DataOperationException {
         try {

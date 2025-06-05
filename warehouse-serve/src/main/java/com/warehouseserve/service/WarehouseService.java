@@ -13,6 +13,7 @@ public interface WarehouseService {
     List<WarehouseDTO> getWarehousesByManager(String manager) throws DataOperationException;
     List<WarehouseDTO> getWarehousesByCapacity(Integer minCapacity) throws DataOperationException;
     List<WarehouseDTO> getWarehousesByAvailableSpace(Integer minAvailableSpace) throws DataOperationException;
+    List<WarehouseDTO> getWarehousesByName(String name) throws DataOperationException;
     
     WarehouseDTO createWarehouse(WarehouseDTO warehouseDTO) throws DataOperationException;
     WarehouseDTO updateWarehouse(Long id, WarehouseDTO warehouseDTO) throws DataOperationException;

@@ -25,7 +25,8 @@ public class WarehouseController {
             @RequestParam(required = false) String location,
             @RequestParam(required = false) String manager,
             @RequestParam(required = false) Integer minCapacity,
-            @RequestParam(required = false) Integer minAvailableSpace) {
+            @RequestParam(required = false) Integer minAvailableSpace,
+            @RequestParam(required = false) String name) {
         try {
             if (source != null) {
                 DataSourceContextHolder.setDataSourceType(source);
@@ -41,6 +42,8 @@ public class WarehouseController {
                 return ResponseEntity.ok(warehouseService.getWarehousesByCapacity(minCapacity));
             } else if (minAvailableSpace != null) {
                 return ResponseEntity.ok(warehouseService.getWarehousesByAvailableSpace(minAvailableSpace));
+            } else if (name != null) {
+                return ResponseEntity.ok(warehouseService.getWarehousesByName(name));
             }
             
             return ResponseEntity.ok(warehouseService.getAllWarehouses());

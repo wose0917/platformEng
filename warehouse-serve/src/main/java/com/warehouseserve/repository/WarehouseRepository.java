@@ -14,6 +14,7 @@ public interface WarehouseRepository extends JpaRepository<Warehouse, Long> {
     List<Warehouse> findByManager(String manager);
     List<Warehouse> findByCapacityGreaterThanEqual(Integer capacity);
     List<Warehouse> findByUsedCapacityLessThanEqual(Integer usedCapacity);
+    List<Warehouse> findByNameContaining(String name);
 
     @Query("SELECT w FROM Warehouse w WHERE (w.capacity - w.usedCapacity) >= :requiredSpace")
     List<Warehouse> findByAvailableSpaceGreaterThanEqual(@Param("requiredSpace") Integer requiredSpace);
